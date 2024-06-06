@@ -1,15 +1,30 @@
 import { useRef } from "react";
-export default function Form({ setTodos }) {
-    const inputRef = useRef()
+export default function Form({ todos, setTodos, editTask, setEditTask }) {
+    const inputRef = useRef()  // to acess the input value
     const handleSubmit = (e) => {
         e.preventDefault();
         const value = inputRef.current.value.trim();
         console.log(value)
-        if(value)
+
+        //edit task
+        if (editTask && value) {
+            const updatedData = [...todos] // as todos data is immutable
+            const index = updatedData.findIndex((item) => item.id === editTask.id)
+            updatedData[index].title = value;
+            setTodos(updatedData)
+            setEditTask(null)
+        }
+
+        //new task
+        else if (value)
             setTodos((prevTodos) => [...prevTodos, { title: value, id: self.crypto.randomUUID(), is_completed: false },
-        ]);
-        // e.target.reset();
-        inputRef.current.value='';
+            ]);
+        inputRef.current.value = '';
+    }
+
+    //edit todo title
+    if (editTask) {
+        inputRef.current.value = editTask.title;
     }
     return (
         <form className="flex justify-center items-center gap-3 mt-8" onSubmit={handleSubmit}>
