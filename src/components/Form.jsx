@@ -27,11 +27,9 @@ export default function Form({ todos, setTodos, editTask, setEditTask }) {
         inputRef.current.value = editTask.title;
     }
     return (
-        <form className="flex justify-center items-center gap-3 mt-8" onSubmit={handleSubmit}>
-            <label>
-                <input ref={inputRef} type="text" name="todo" id="todo" placeholder="Write your task .." className="border border-indigo-200 rounded-sm p-2 focus:outline-none" />
-            </label>
-            <button className="bg-green-600 p-1 px-2 rounded-sm text-3xl">+</button>
+        <form className="flex justify-between border w-96 mx-auto mt-2 rounded-sm" onSubmit={handleSubmit}>
+            <input ref={inputRef} type="text" name="todo" id="todo" placeholder="Write your task .." className="border border-indigo-200 rounded-sm p-3 focus:outline-none w-80" />
+            <button className="bg-green-600 p-1 px-4 rounded-sm text-3xl">+</button>
         </form>
     )
 }
