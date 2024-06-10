@@ -1,13 +1,14 @@
 import Item from "./Item"
 
-export default function TodoList({ todos, setTodos, handleEdit, setEditTask }) {
+export default function TodoList({ todos, setTodos, handleEdit, setDeleteTask }) {
 
 function handleDelete(id){
+  setDeleteTask(id)
   const updatedData = todos.filter((item)=>item.id !==id)
   setTodos(updatedData)
-  console.log(todos)
-   setEditTask(null)
 }
+
+console.log(todos)
 
   return (
     <ol className="todoList text-center mt-3 overflow-y-scroll h-[81vh]">

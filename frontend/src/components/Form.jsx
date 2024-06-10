@@ -1,5 +1,5 @@
 import { useRef } from "react";
-export default function Form({ todos, setTodos, editTask, setEditTask }) {
+export default function Form({ todos, setTodos, editTask, setEditTask, deleteTask }) {
     const inputRef = useRef()  // to acess the input value
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,6 +28,9 @@ export default function Form({ todos, setTodos, editTask, setEditTask }) {
     if (editTask) {
         inputRef.current.value = editTask.title;
     }
+    if(deleteTask && deleteTask === editTask?.id)
+        inputRef.current.value = '';
+
     return (
         <form className="flex justify-between border w-96 mx-auto mt-2 rounded-sm" onSubmit={handleSubmit}>
             <input ref={inputRef} type="text" name="todo" id="todo" placeholder="Write your task .." className="border border-indigo-200 rounded-sm p-3 focus:outline-none w-80" />

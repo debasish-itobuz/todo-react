@@ -9,6 +9,7 @@ function App() {
   // data is storing in todos array
   const [todos, setTodos] = useState([])
   const [editTask, setEditTask] = useState(null)
+  const [deleteTask, setDeleteTask] = useState(null)
 
   const handleEdit = (id) => {
     const task = todos.find((item) => item.id === id)
@@ -17,8 +18,8 @@ function App() {
   return (
     <>
       <Header />
-      <Form todos={todos} setTodos={setTodos} editTask={editTask} setEditTask={setEditTask} />
-      <TodoList todos={todos} setTodos={setTodos} handleEdit={handleEdit} setEditTask={setEditTask} />
+      <Form todos={todos} setTodos={setTodos} editTask={editTask} setEditTask={setEditTask} deleteTask = {deleteTask} />
+      <TodoList todos={todos} setTodos={setTodos} handleEdit={handleEdit} setDeleteTask = {setDeleteTask} />
     </>
   )
 }
