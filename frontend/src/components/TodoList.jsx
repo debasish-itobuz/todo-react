@@ -1,12 +1,24 @@
 import Item from "./Item"
+import axios from "axios"
 
 export default function TodoList({ todos, setTodos, handleEdit, setDeleteTask }) {
 
-function handleDelete(id){
-  setDeleteTask(id)
-  const updatedData = todos.filter((item)=>item.id !==id)
-  setTodos(updatedData)
-}
+  async function handleDelete(id){
+    const response = await axios({method:"delete", url:`http://localhost:8000/todo/delete/?id=${id}`})
+    if(response.status === 200){
+      setDeleteTask(id);
+    }
+  }
+
+
+
+
+// function handleDelete(id){
+//   setDeleteTask(id)
+//   const updatedData = todos.filter((item)=>item.id !==id)
+//   setTodos(updatedData)
+
+// }
 
 // console.log(todos)
 

@@ -19,7 +19,7 @@ function App() {
       setTodos(response.data.data)
       // console.log(response)
     }fetchData()
-  },[newTask, editTask])
+  },[newTask, editTask, deleteTask])
 
   const handleEdit = (task) => {
     setEditTask(task)

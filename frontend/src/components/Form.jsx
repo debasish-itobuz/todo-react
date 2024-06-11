@@ -52,7 +52,7 @@ export default function Form({ todos, setTodos, editTask, setEditTask, deleteTas
     if (editTask) {
         inputRef.current.value = editTask.title;
     }
-    if(deleteTask && deleteTask === editTask?.id)
+    if(deleteTask && deleteTask === editTask?._id)
         inputRef.current.value = '';
 
     return (
