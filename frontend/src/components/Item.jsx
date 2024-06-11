@@ -10,8 +10,8 @@ export default function Item({ item, handleEdit, handleDelete}) {
         <p className="text-ellipsis text-nowrap">{item.title}</p>
       </div>
       <div className="flex gap-3 w-[20%] ">
-        <button onClick={() => handleEdit(item.id)} className="text-2xl"><FaRegEdit/></button>
-        <button onClick={() => handleDelete(item.id)} className="text-2xl"><RiDeleteBinLine/></button>
+        <button onClick={() => handleEdit(item)} className="text-2xl"><FaRegEdit/></button>
+        <button onClick={() => handleDelete(item._id)} className="text-2xl"><RiDeleteBinLine/></button>
       </div>
     </li>
   )

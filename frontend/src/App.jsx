@@ -17,12 +17,11 @@ function App() {
     async function fetchData(){
       const response = await axios({method:"get", url:"http://localhost:8000/todo/get"});
       setTodos(response.data.data)
-      console.log(response)
+      // console.log(response)
     }fetchData()
-  },[newTask])
+  },[newTask, editTask])
 
-  const handleEdit = (id) => {
-    const task = todos.find((item) => item.id === id)
+  const handleEdit = (task) => {
     setEditTask(task)
   }
   return (

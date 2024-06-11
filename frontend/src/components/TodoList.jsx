@@ -8,7 +8,7 @@ function handleDelete(id){
   setTodos(updatedData)
 }
 
-console.log(todos)
+// console.log(todos)
 
   return (
     <ol className="todoList text-center mt-3 overflow-y-scroll h-[81vh]">

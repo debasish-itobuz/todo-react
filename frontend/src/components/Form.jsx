@@ -9,19 +9,30 @@ export default function Form({ todos, setTodos, editTask, setEditTask, deleteTas
         if(response.status === 200)  setNewTask(input)
     }
 
+    async function updateData(input, id){
+        const response = await axios({method:"put", url:`http://localhost:8000/todo/update/?id=${id}`, data:{title:input}})
+        console.log(response)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const value = inputRef.current.value.trim();
         console.log(value)
 
         //edit task
-        if (editTask) {
-            const updatedData = [...todos] // as todos data is immutable
-            const index = updatedData.findIndex((item) => item.id === editTask.id)
-            // updatedData[index].title = value;
-            value === '' ? '' : updatedData[index].title = value
-            setTodos(updatedData)
-            console.log(todos)
+        // if (editTask) {
+        //     const updatedData = [...todos] // as todos data is immutable
+        //     const index = updatedData.findIndex((item) => item.id === editTask.id)
+        //     // updatedData[index].title = value;
+        //     value === '' ? '' : updatedData[index].title = value
+        //     setTodos(updatedData)
+        //     console.log(todos)
+        //     setEditTask(null)
+        // }
+
+        if(editTask ){
+            console.log(editTask)
+            if(inputRef.current.value.trim()) updateData(inputRef.current.value.trim(), editTask._id);
             setEditTask(null)
         }
 
