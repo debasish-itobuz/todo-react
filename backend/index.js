@@ -1,12 +1,15 @@
 import express from 'express'
+import dotenv from "dotenv/config";
 import todoRoutes from './routes/todoRoute.js'
 
+import connectToDB from "./config/dbConnection.js";
+connectToDB();
+
 const app = express()
-const port = 8000
 
 app.use(express.json())
 app.use('/todo', todoRoutes)
 
-app.listen(port, ()=>{
-    console.log(`Server running at port ${port}`)
+app.listen(process.env.PORT, ()=>{
+    console.log(`Server running at port ${process.env.PORT}`)
 })
