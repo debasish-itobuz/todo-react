@@ -12,7 +12,7 @@ export default function TodoList({ todos, handleEdit, setDeleteTask }) {
 
   return (
     <ol className="todoList text-center mt-3 overflow-y-scroll h-[81vh]">
-      {todos?.length > 0 ? (todos.map((item, index) => <Item key={index} item={item} handleEdit={handleEdit} handleDelete = {handleDelete}  />)) : (
+      {todos?.length > 0 ? (todos.map((item) => <Item key={item._id} item={item} handleEdit={handleEdit} handleDelete = {handleDelete}  />)) : (
         <p>Seems lonely in here, what are you up to?</p>
       )}
     </ol>
