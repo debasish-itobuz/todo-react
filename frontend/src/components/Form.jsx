@@ -1,6 +1,14 @@
+import axios from "axios";
 import { useRef } from "react";
-export default function Form({ todos, setTodos, editTask, setEditTask, deleteTask }) {
+export default function Form({ todos, setTodos, editTask, setEditTask, deleteTask, setNewTask }) {
     const inputRef = useRef()  // to acess the input value
+
+    async function createData(input){
+        const response = await axios({method:"post", url:"http://localhost:8000/todo/post", data:{title:input}})
+        // console.log(response)
+        if(response.status === 200)  setNewTask(input)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const value = inputRef.current.value.trim();
@@ -18,9 +26,14 @@ export default function Form({ todos, setTodos, editTask, setEditTask, deleteTas
         }
 
         //new task
-        else if (value)
-            setTodos((prevTodos) => [...prevTodos, { title: value, id: self.crypto.randomUUID(), is_completed: false },
-            ]);
+        // else if (value)
+        //     setTodos((prevTodos) => [...prevTodos, { title: value, id: self.crypto.randomUUID(), is_completed: false },]);
+        // inputRef.current.value = '';
+
+        else if (value){
+            createData(inputRef.current.value.trim());   
+        }
+            
         inputRef.current.value = '';
     }
 

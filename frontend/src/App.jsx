@@ -11,6 +11,7 @@ function App() {
   const [todos, setTodos] = useState([])
   const [editTask, setEditTask] = useState(null)
   const [deleteTask, setDeleteTask] = useState(null)
+  const [newTask, setNewTask] = useState(null)
 
   useEffect(()=>{
     async function fetchData(){
@@ -18,7 +19,7 @@ function App() {
       setTodos(response.data.data)
       console.log(response)
     }fetchData()
-  },[])
+  },[newTask])
 
   const handleEdit = (id) => {
     const task = todos.find((item) => item.id === id)
@@ -27,7 +28,7 @@ function App() {
   return (
     <>
       <Header />
-      <Form todos={todos} setTodos={setTodos} editTask={editTask} setEditTask={setEditTask} deleteTask = {deleteTask} />
+      <Form todos={todos} setTodos={setTodos} editTask={editTask} setEditTask={setEditTask} deleteTask = {deleteTask} setNewTask = {setNewTask} />
       <TodoList todos={todos} setTodos={setTodos} handleEdit={handleEdit} setDeleteTask = {setDeleteTask} />
     </>
   )
