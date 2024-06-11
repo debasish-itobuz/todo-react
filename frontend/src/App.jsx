@@ -27,8 +27,8 @@ function App() {
   return (
     <>
       <Header />
-      <Form todos={todos} setTodos={setTodos} editTask={editTask} setEditTask={setEditTask} deleteTask = {deleteTask} setNewTask = {setNewTask} />
-      <TodoList todos={todos} setTodos={setTodos} handleEdit={handleEdit} setDeleteTask = {setDeleteTask} />
+      <Form editTask={editTask} setEditTask={setEditTask} deleteTask = {deleteTask} setNewTask = {setNewTask} />
+      <TodoList todos={todos} handleEdit={handleEdit} setDeleteTask = {setDeleteTask} />
     </>
   )
 }

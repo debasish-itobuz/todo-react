@@ -1,7 +1,6 @@
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 
-
 export default function Item({ item, handleEdit, handleDelete}) {
 
   return (

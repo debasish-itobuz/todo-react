@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRef } from "react";
-export default function Form({ todos, setTodos, editTask, setEditTask, deleteTask, setNewTask }) {
+export default function Form({ editTask, setEditTask, deleteTask, setNewTask }) {
     const inputRef = useRef()  // to acess the input value
 
     async function createData(input){
@@ -17,18 +17,7 @@ export default function Form({ todos, setTodos, editTask, setEditTask, deleteTas
     const handleSubmit = (e) => {
         e.preventDefault();
         const value = inputRef.current.value.trim();
-        console.log(value)
-
-        //edit task
-        // if (editTask) {
-        //     const updatedData = [...todos] // as todos data is immutable
-        //     const index = updatedData.findIndex((item) => item.id === editTask.id)
-        //     // updatedData[index].title = value;
-        //     value === '' ? '' : updatedData[index].title = value
-        //     setTodos(updatedData)
-        //     console.log(todos)
-        //     setEditTask(null)
-        // }
+        // console.log(value)
 
         if(editTask ){
             console.log(editTask)
@@ -37,14 +26,9 @@ export default function Form({ todos, setTodos, editTask, setEditTask, deleteTas
         }
 
         //new task
-        // else if (value)
-        //     setTodos((prevTodos) => [...prevTodos, { title: value, id: self.crypto.randomUUID(), is_completed: false },]);
-        // inputRef.current.value = '';
-
         else if (value){
             createData(inputRef.current.value.trim());   
-        }
-            
+        }   
         inputRef.current.value = '';
     }
 
@@ -52,6 +36,7 @@ export default function Form({ todos, setTodos, editTask, setEditTask, deleteTas
     if (editTask) {
         inputRef.current.value = editTask.title;
     }
+    
     if(deleteTask && deleteTask === editTask?._id)
         inputRef.current.value = '';
 
